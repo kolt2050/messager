@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15
+    container_name: messager_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: messager
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
   server:
     build: ./server
     container_name: messager_server
@@ -10,12 +22,16 @@ services:
       - ./server:/app
       - server_data:/data
     environment:
-      - DATABASE_URL=sqlite:////data/messenger.db
+      - DATABASE_URL=postgresql://user:password@db:5432/messager
+      # - DATABASE_URL=postgresql://user:password@external-db-host:5432/messager # Use your own DB
       - SMTP_HOST=${SMTP_HOST}
       - SMTP_PORT=${SMTP_PORT}
       - SMTP_USER=${SMTP_USER}
       - SMTP_PASS=${SMTP_PASS}
+    depends_on:
+      - db
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:
   server_data:
+  postgres_data:
