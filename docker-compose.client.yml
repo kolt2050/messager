@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  client:
+    build: ./client
+    container_name: messager_client
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    command: npm run dev -- --host
