@@ -3,6 +3,7 @@ version: '3.8'
 services:
   client:
     build: ./client
+    image: messager-client:latest
     container_name: messager_client
     ports:
       - "3001:3001"
