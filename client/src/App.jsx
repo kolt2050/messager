@@ -3,6 +3,7 @@ import ConnectionSettings from './components/ConnectionSettings';
 import Login from './components/Login';
 import Chat from './components/Chat';
 import { getMe, getServerUrl, clearServerUrl } from './api';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
     const [serverUrl, setServerUrlState] = useState(getServerUrl());
@@ -64,7 +65,11 @@ function App() {
     }
 
     // Step 3: Logged in — show chat
-    return <Chat user={user} onLogout={handleLogout} serverUrl={serverUrl} onDisconnect={handleDisconnect} />;
+    return (
+        <ErrorBoundary>
+            <Chat user={user} onLogout={handleLogout} serverUrl={serverUrl} onDisconnect={handleDisconnect} />
+        </ErrorBoundary>
+    );
 }
 
 export default App;

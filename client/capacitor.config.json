@@ -1,5 +1,10 @@
 {
   "appId": "com.messenger.app",
   "appName": "messenger-client",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
 }

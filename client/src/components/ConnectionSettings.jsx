@@ -16,7 +16,7 @@ function ConnectionSettings({ onConnected }) {
         }
 
         // Normalize URL
-        let serverUrl = url.trim().replace(/\/+$/, '');
+        let serverUrl = url.trim().toLowerCase().replace(/\/+$/, '');
         if (!serverUrl.startsWith('http://') && !serverUrl.startsWith('https://')) {
             serverUrl = 'http://' + serverUrl;
         }
@@ -24,15 +24,17 @@ function ConnectionSettings({ onConnected }) {
         setLoading(true);
 
         try {
+            console.log("Checking server at:", serverUrl);
             const available = await checkServer(serverUrl);
             if (available) {
                 setServerUrl(serverUrl);
                 onConnected(serverUrl);
             } else {
-                setError('Сервер недоступен. Проверьте адрес и попробуйте снова.');
+                setError(`Сервер по адресу ${serverUrl} недоступен. Убедитесь, что сервер запущен и адрес указан верно.`);
             }
         } catch (err) {
-            setError('Ошибка подключения: ' + (err.message || 'Неизвестная ошибка'));
+            console.error("Connection error:", err);
+            setError('Ошибка подключения: ' + (err.message || 'Неизвестная ошибка') + '. Попробуйте открыть этот адрес в браузере телефона.');
         } finally {
             setLoading(false);
         }

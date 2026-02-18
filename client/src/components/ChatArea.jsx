@@ -189,7 +189,7 @@ function ChatArea({ channel, messages, onSendMessage, onDeleteMessage, onManageM
                                         textAlign: 'right',
                                         marginTop: '4px'
                                     }}>
-                                        {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                        {msg.created_at ? new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
                                     </div>
                                 </div>
                             </div>

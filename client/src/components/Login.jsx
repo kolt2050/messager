@@ -11,7 +11,7 @@ function Login({ onLogin, serverUrl, onDisconnect }) {
         setError('');
 
         try {
-            const data = await login(username, password);
+            const data = await login(username.toLowerCase(), password);
             localStorage.setItem('token', data.access_token);
 
             const user = await getMe();

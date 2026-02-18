@@ -57,10 +57,30 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
     }, []);
 
     useEffect(() => {
-        let wsUrl = serverUrl.replace(/^http/, 'ws') + '/ws';
-        wsRef.current = new WebSocket(wsUrl);
-        wsRef.current.onmessage = (event) => handleWsMessage(JSON.parse(event.data));
-        return () => wsRef.current?.close();
+        if (!serverUrl) return;
+
+        let ws = null;
+        try {
+            const wsUrl = serverUrl.replace(/^http/, 'ws') + '/ws';
+            console.log("Connecting to WebSocket:", wsUrl);
+            ws = new WebSocket(wsUrl);
+            wsRef.current = ws;
+
+            ws.onopen = () => console.log("WebSocket connected");
+            ws.onmessage = (event) => {
+                try {
+                    handleWsMessage(JSON.parse(event.data));
+                } catch (e) {
+                    console.error("Failed to parse WS message", e);
+                }
+            };
+            ws.onerror = (err) => console.error("WebSocket error:", err);
+            ws.onclose = () => console.log("WebSocket closed");
+        } catch (err) {
+            console.error("Failed to initialize WebSocket:", err);
+        }
+
+        return () => ws?.close();
     }, [serverUrl]);
 
     useEffect(() => {
@@ -366,7 +386,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
         const submit = async () => {
             if (!name || !pass) return;
             try {
-                await createUser(name, pass, email);
+                await createUser(name.toLowerCase(), pass, email);
                 showInfo("Успех", `Пользователь ${name} успешно создан`);
                 loadUsers();
                 closeModal();
@@ -505,7 +525,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                 <button
                                     onClick={async () => {
                                         try {
-                                            await addChannelMember(updatedChannel.id, usernameToAdd);
+                                            await addChannelMember(updatedChannel.id, usernameToAdd.toLowerCase());
                                             const updatedData = await getChannels();
                                             setChannels(updatedData);
                                             const fresh = updatedData.find(c => c.id === updatedChannel.id);
@@ -561,6 +581,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
     };
 
     const activeChannel = channels.find(c => c.id === activeChannelId);
+
 
     return (
         <div className="app-container">
