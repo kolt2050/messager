@@ -6,11 +6,38 @@ from auth_dependencies import get_password_hash
 from routers import auth, chat, admin, files
 from fastapi.staticfiles import StaticFiles
 import os
+import time
+import logging
+from datetime import datetime
+from fastapi import FastAPI, Request
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("api_logger")
 
 # Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Messager API")
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    duration = (time.time() - start_time) * 1000
+    
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    client_ip = request.client.host if request.client else "unknown"
+    status_code = response.status_code
+    
+    log_entry = f"[{now}] {client_ip} - {request.method} {request.url.path} - Status: {status_code} ({duration:.2f}ms)"
+    
+    if 200 <= status_code < 400:
+        print(f"✅ SUCCESS: {log_entry}")
+    else:
+        print(f"❌ FAILURE: {log_entry}")
+        
+    return response
 
 # Create uploads directory if not exists
 os.makedirs("static/uploads", exist_ok=True)

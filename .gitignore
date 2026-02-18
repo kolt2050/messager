@@ -44,3 +44,15 @@ server/*.db
 # Uploads
 server/static/uploads/*
 !server/static/uploads/.gitkeep
+
+# Android / Capacitor
+client/android/.gradle/
+client/android/app/build/
+client/android/build/
+client/android/local.properties
+client/android/capacitor-cordova-android-plugins/
+client/android/app/src/main/assets/public/
+client/android/app/src/main/assets/capacitor.config.json
+client/android/app/src/main/assets/capacitor.plugins.json
+*.apk
+*.aar

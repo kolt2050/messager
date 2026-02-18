@@ -1,0 +1,5 @@
+{
+  "appId": "com.messenger.app",
+  "appName": "messenger-client",
+  "webDir": "dist"
+}
