@@ -119,6 +119,32 @@ messager/
 └── README.md               # Документация проекта
 ```
 
+
+## 🗄️ База Данных
+
+База данных SQLite (`messenger.db`) хранится внутри Docker-тома `server_data` для сохранности данных.
+
+**Путь внутри контейнера:** `/data/messenger.db`
+
+### Полезные команды для работы с БД
+
+**Сделать бэкап (скопировать базу из контейнера на хост):**
+```bash
+docker cp messager_server:/data/messenger.db ./messenger_backup.db
+```
+
+**Восстановить базу (скопировать с хоста в контейнер):**
+```bash
+docker cp ./messenger_backup.db messager_server:/data/messenger.db
+docker-compose restart server
+```
+
+**Сбросить базу (удалить все данные):**
+```bash
+docker-compose -f docker-compose.server.yml down -v
+docker-compose up -d --build server
+```
+
 ## Лицензия
 
 [MIT](LICENSE)
