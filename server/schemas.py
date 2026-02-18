@@ -70,6 +70,7 @@ class MessageBase(BaseModel):
 
 class MessageCreate(MessageBase):
     image_url: Optional[str] = None
+    thumbnail_url: Optional[str] = None
 
     @field_validator('content')
     @classmethod
@@ -100,6 +101,7 @@ class Message(MessageBase):
     # Можно добавить username отправителя для удобства на фронте
     username: Optional[str] = None 
     image_url: Optional[str] = None
+    thumbnail_url: Optional[str] = None
     
     class Config:
         from_attributes = True

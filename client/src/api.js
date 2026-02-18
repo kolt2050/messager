@@ -137,8 +137,8 @@ export const getMessages = async (channelId) => {
     return response.data;
 };
 
-export const sendMessage = async (channelId, content, imageUrl = null) => {
-    const response = await api.post(`/channels/${channelId}/messages`, { content, image_url: imageUrl });
+export const sendMessage = async (channelId, content, imageUrl = null, thumbnailUrl = null) => {
+    const response = await api.post(`/channels/${channelId}/messages`, { content, image_url: imageUrl, thumbnail_url: thumbnailUrl });
     return response.data;
 };
 

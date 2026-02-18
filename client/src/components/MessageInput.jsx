@@ -50,13 +50,15 @@ function MessageInput({ onSendMessage, disabled }) {
 
         setIsUploading(true);
         let imageUrl = null;
+        let thumbnailUrl = null;
 
         try {
             if (selectedImage) {
                 const uploadResp = await uploadFile(selectedImage);
                 imageUrl = uploadResp.url;
+                thumbnailUrl = uploadResp.thumbnail_url;
             }
-            onSendMessage(content, imageUrl);
+            onSendMessage(content, imageUrl, thumbnailUrl);
             setContent('');
             clearImage();
         } catch (err) {

@@ -151,7 +151,8 @@ async def create_message(channel_id: int, message: MessageCreate, db: Session = 
         channel_id=channel_id,
         user_id=current_user.id,
         content=message.content,
-        image_url=message.image_url
+        image_url=message.image_url,
+        thumbnail_url=message.thumbnail_url
     )
     db.add(new_message)
     db.commit()
@@ -163,6 +164,7 @@ async def create_message(channel_id: int, message: MessageCreate, db: Session = 
         "user_id": new_message.user_id,
         "content": new_message.content,
         "image_url": new_message.image_url,
+        "thumbnail_url": new_message.thumbnail_url,
         "username": current_user.username,
         "created_at": new_message.created_at.isoformat()
     }

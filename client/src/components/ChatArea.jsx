@@ -164,7 +164,7 @@ function ChatArea({ channel, messages, onSendMessage, onDeleteMessage, onManageM
                                     {msg.image_url && getImageUrl(msg.image_url) && (
                                         <div style={{ marginBottom: '8px' }}>
                                             <img
-                                                src={getImageUrl(msg.image_url)}
+                                                src={getImageUrl(msg.thumbnail_url || msg.image_url)}
                                                 alt="Attachment"
                                                 style={{
                                                     maxWidth: '100%',

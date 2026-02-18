@@ -135,10 +135,10 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
         });
     }
 
-    const handleSendMessage = async (content, imageUrl = null) => {
+    const handleSendMessage = async (content, imageUrl = null, thumbnailUrl = null) => {
         if (!activeChannelId) return;
         try {
-            await sendMessage(activeChannelId, content, imageUrl);
+            await sendMessage(activeChannelId, content, imageUrl, thumbnailUrl);
         } catch (err) {
             console.error("Failed to send", err);
         }

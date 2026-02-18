@@ -54,6 +54,7 @@ class Message(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     content = Column(Text)
     image_url = Column(String, nullable=True)
+    thumbnail_url = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     channel = relationship("Channel", back_populates="messages")
