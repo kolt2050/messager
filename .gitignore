@@ -33,5 +33,14 @@ $RECYCLE.BIN/
 *.swo
 
 # Project Specific
+# Project Specific
 client/.env
 test_image.png
+
+# DB
+*.db
+server/*.db
+
+# Uploads
+server/static/uploads/*
+!server/static/uploads/.gitkeep
