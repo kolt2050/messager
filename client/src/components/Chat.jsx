@@ -213,7 +213,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                     showInfo("Ошибка", err.response?.data?.detail || "Неверный код");
                                 }
                             }}
-                            style={{ marginTop: '15px', width: '100%', background: '#10b981' }}
+                            style={{ marginTop: '15px', width: '100%', background: 'var(--success)' }}
                         >
                             Подтвердить
                         </button>
@@ -274,9 +274,9 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     {/* Profile Section */}
                     <div>
-                        <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>Личные данные</h4>
+                        <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid var(--border)', paddingBottom: '5px' }}>Личные данные</h4>
                         <div>
-                            <label style={{ fontSize: '0.85rem', color: '#666' }}>Email</label>
+                            <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Email</label>
                             <input
                                 type="email"
                                 defaultValue={emailValue}
@@ -291,7 +291,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                     {/* SMTP Settings (Admin Only) */}
                     {user.is_admin && (
                         <div>
-                            <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>Настройки SMTP</h4>
+                            <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid var(--border)', paddingBottom: '5px' }}>Настройки SMTP</h4>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                 <button
                                     onClick={async (e) => {
@@ -309,19 +309,19 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                                 content: (
                                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                                         <div>
-                                                            <label style={{ fontSize: '0.85rem', color: '#666' }}>SMTP Host</label>
+                                                            <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>SMTP Host</label>
                                                             <input type="text" defaultValue={host} onChange={e => host = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                                                         </div>
                                                         <div>
-                                                            <label style={{ fontSize: '0.85rem', color: '#666' }}>SMTP Port</label>
+                                                            <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>SMTP Port</label>
                                                             <input type="number" defaultValue={port} onChange={e => port = parseInt(e.target.value)} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                                                         </div>
                                                         <div>
-                                                            <label style={{ fontSize: '0.85rem', color: '#666' }}>SMTP User</label>
+                                                            <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>SMTP User</label>
                                                             <input type="text" defaultValue={user} onChange={e => user = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                                                         </div>
                                                         <div>
-                                                            <label style={{ fontSize: '0.85rem', color: '#666' }}>SMTP Password</label>
+                                                            <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>SMTP Password</label>
                                                             <input type="password" defaultValue={pass} onChange={e => pass = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                                                         </div>
                                                         <button
@@ -333,7 +333,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                                                     showInfo("Ошибка", "Не удалось сохранить: " + (err.response?.data?.detail || err.message));
                                                                 }
                                                             }}
-                                                            style={{ marginTop: '10px', background: '#10b981', width: '100%' }}
+                                                            style={{ marginTop: '10px', background: 'var(--success)', width: '100%' }}
                                                         >
                                                             Сохранить
                                                         </button>
@@ -347,7 +347,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                             btn.innerText = "Настроить SMTP";
                                         }
                                     }}
-                                    style={{ background: '#64748b', fontSize: '0.85rem', width: '100%' }}
+                                    style={{ background: 'var(--text-secondary)', fontSize: '0.85rem', width: '100%' }}
                                 >
                                     Настроить SMTP
                                 </button>
@@ -357,22 +357,22 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
 
                     {/* Password Section */}
                     <div>
-                        <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>Смена пароля</h4>
+                        <h4 style={{ margin: '0 0 10px 0', borderBottom: '1px solid var(--border)', paddingBottom: '5px' }}>Смена пароля</h4>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                             <div>
-                                <label style={{ fontSize: '0.85rem', color: '#666' }}>Текущий пароль</label>
+                                <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Текущий пароль</label>
                                 <input type="password" onChange={e => oldPassValue = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                             </div>
                             <div>
-                                <label style={{ fontSize: '0.85rem', color: '#666' }}>Новый пароль</label>
+                                <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Новый пароль</label>
                                 <input type="password" onChange={e => newPassValue = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                             </div>
                             <div>
-                                <label style={{ fontSize: '0.85rem', color: '#666' }}>Подтвердите новый пароль</label>
+                                <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Подтвердите новый пароль</label>
                                 <input type="password" onChange={e => confirmPassValue = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                             </div>
-                            <button onClick={submitPassword} style={{ marginTop: '10px', width: 'auto', fontSize: '0.85rem', background: '#f59e0b' }}>Обновить пароль</button>
+                            <button onClick={submitPassword} style={{ marginTop: '10px', width: 'auto', fontSize: '0.85rem' }}>Обновить пароль</button>
                         </div>
                     </div>
                 </div>
@@ -401,15 +401,15 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
             content: (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <div>
-                        <label style={{ fontSize: '0.85rem', color: '#666' }}>Имя пользователя</label>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Имя пользователя</label>
                         <input type="text" onChange={e => name = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                     </div>
                     <div>
-                        <label style={{ fontSize: '0.85rem', color: '#666' }}>Email (опционально)</label>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Email (опционально)</label>
                         <input type="email" onChange={e => email = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} placeholder="user@example.com" />
                     </div>
                     <div>
-                        <label style={{ fontSize: '0.85rem', color: '#666' }}>Пароль</label>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Пароль</label>
                         <input type="password" onChange={e => pass = e.target.value} style={{ width: '100%', padding: '8px', marginTop: '4px' }} />
                     </div>
                 </div>
@@ -466,7 +466,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
             content: (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                     <div>
-                        <label style={{ fontSize: '0.85rem', color: '#666' }}>Электронная почта</label>
+                        <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Электронная почта</label>
                         <input
                             type="email"
                             defaultValue={emailValue}
@@ -482,12 +482,12 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                             onChange={e => isAdminValue = e.target.checked}
                             id="isAdminCheckbox"
                         />
-                        <label htmlFor="isAdminCheckbox" style={{ fontSize: '0.85rem', color: 'red' }}>Сделать Администратором</label>
+                        <label htmlFor="isAdminCheckbox" style={{ fontSize: '0.85rem', color: 'var(--danger)' }}>Сделать Администратором</label>
                     </div>
-                    <div style={{ borderTop: '1px solid #eee', pt: '10px', marginTop: '10px' }}>
+                    <div style={{ borderTop: '1px solid var(--border)', pt: '10px', marginTop: '10px' }}>
                         <button
                             onClick={triggerReset}
-                            style={{ background: '#3b82f6', fontSize: '0.8rem', width: '100%' }}
+                            style={{ fontSize: '0.8rem', width: '100%' }}
                         >
                             Сбросить и отправить пароль на почту
                         </button>
@@ -534,13 +534,13 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                             showInfo("Ошибка", err.response?.data?.detail || "Не удалось добавить");
                                         }
                                     }}
-                                    style={{ width: 'auto', background: '#10b981' }}
+                                    style={{ width: 'auto', background: 'var(--success)' }}
                                 >
                                     Добавить
                                 </button>
                             </div>
                         )}
-                        <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid #eee', borderRadius: '4px' }}>
+                        <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid var(--border)', borderRadius: '4px' }}>
                             {updatedChannel.members.map(m => (
                                 <div key={m.id} style={{
                                     display: 'flex',
@@ -585,36 +585,36 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
 
     return (
         <div className="app-container">
-            <div style={{ display: 'flex', flexDirection: 'column', width: '250px', minWidth: '250px', flexShrink: 0, borderRight: '1px solid #ccc', height: '100%', overflow: 'hidden' }}>
-                <div style={{ padding: '10px', background: '#eee', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', width: '260px', minWidth: '260px', flexShrink: 0, borderRight: '1px solid var(--border)', height: '100%', overflow: 'hidden', background: 'var(--surface)' }}>
+                <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <b>{user.username}</b>
+                        <b style={{ fontSize: '0.95rem', letterSpacing: '-0.01em' }}>{user.username}</b>
                         <button
                             onClick={onLogout}
-                            style={{ fontSize: '0.8em', padding: '2px 5px', width: 'auto', background: '#666' }}
+                            style={{ fontSize: '0.75rem', padding: '0.3rem 0.6rem', width: 'auto', background: 'var(--bg)', color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
                         >
                             Выход
                         </button>
                     </div>
                     <button
                         onClick={handleSettings}
-                        style={{ fontSize: '0.75rem', padding: '4px', background: '#94a3b8', border: 'none' }}
+                        style={{ fontSize: '0.8rem', padding: '0.45rem', background: 'var(--bg)', color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
                     >
                         ⚙ Настройки
                     </button>
                 </div>
 
                 <div style={{
-                    padding: '6px 10px',
-                    backgroundColor: '#f0f9ff',
-                    borderBottom: '1px solid #e5e7eb',
-                    fontSize: '0.7rem',
-                    color: '#0369a1',
+                    padding: '8px 14px',
+                    backgroundColor: 'var(--primary-light)',
+                    borderBottom: '1px solid var(--border)',
+                    fontSize: '0.75rem',
+                    color: 'var(--primary)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center'
                 }}>
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontWeight: '500' }}>
                         🔗 {serverUrl}
                     </span>
                     <button
@@ -622,12 +622,13 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                         style={{
                             background: 'none',
                             border: 'none',
-                            color: '#ef4444',
+                            color: 'var(--danger)',
                             cursor: 'pointer',
-                            fontSize: '0.65rem',
+                            fontSize: '0.7rem',
                             padding: '0',
                             width: 'auto',
-                            whiteSpace: 'nowrap'
+                            whiteSpace: 'nowrap',
+                            fontWeight: '600'
                         }}
                     >
                         Сменить
@@ -644,14 +645,14 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                 />
 
                 {user.is_admin && (
-                    <div style={{ padding: '10px', borderTop: '1px solid #e5e7eb' }}>
-                        <button onClick={handleCreateUser} style={{ background: '#10b981', fontSize: '0.8rem', width: '100%' }}>+ Пользователь</button>
+                    <div style={{ padding: '10px', borderTop: '1px solid var(--border)' }}>
+                        <button onClick={handleCreateUser} style={{ background: 'var(--success)', fontSize: '0.8rem', width: '100%' }}>+ Пользователь</button>
                     </div>
                 )}
 
                 {user.is_admin && users.length > 0 && (
-                    <div style={{ borderTop: '1px solid #e5e7eb', padding: '10px', maxHeight: '40%', overflowY: 'auto' }}>
-                        <div style={{ fontWeight: 'bold', fontSize: '0.85rem', marginBottom: '8px', color: '#374151' }}>
+                    <div style={{ borderTop: '1px solid var(--border)', padding: '10px', maxHeight: '40%', overflowY: 'auto' }}>
+                        <div style={{ fontWeight: '700', fontSize: '0.8rem', marginBottom: '8px', color: 'var(--text)', letterSpacing: '-0.01em' }}>
                             Пользователи ({users.length})
                         </div>
                         {users.map(u => (
@@ -660,9 +661,9 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
                                 padding: '6px 8px',
-                                marginBottom: '4px',
-                                background: '#f9fafb',
-                                borderRadius: '6px',
+                                marginBottom: '3px',
+                                background: 'var(--border-light)',
+                                borderRadius: '8px',
                                 fontSize: '0.85rem'
                             }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -670,12 +671,12 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                         width: '8px',
                                         height: '8px',
                                         borderRadius: '50%',
-                                        background: u.is_admin ? '#f59e0b' : '#10b981',
+                                        background: u.is_admin ? 'var(--warning)' : 'var(--success)',
                                         display: 'inline-block'
                                     }}></span>
-                                    <span>{u.username}</span>
+                                    <span style={{ fontWeight: '500' }}>{u.username}</span>
                                     {u.is_admin && (
-                                        <span style={{ fontSize: '0.7rem', color: '#f59e0b', fontWeight: '600' }}>admin</span>
+                                        <span style={{ fontSize: '0.65rem', color: 'var(--warning)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>admin</span>
                                     )}
                                 </div>
                                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -684,7 +685,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                         style={{
                                             background: 'none',
                                             border: 'none',
-                                            color: '#6366f1',
+                                            color: 'var(--primary)',
                                             cursor: 'pointer',
                                             fontSize: '0.8rem',
                                             padding: '0',
@@ -700,7 +701,7 @@ function Chat({ user, onLogout, serverUrl, onDisconnect }) {
                                             style={{
                                                 background: 'none',
                                                 border: 'none',
-                                                color: '#ef4444',
+                                                color: 'var(--danger)',
                                                 cursor: 'pointer',
                                                 fontSize: '0.75rem',
                                                 padding: '0',

@@ -10,6 +10,20 @@ function App() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // Cleanup old theme system remains
+    useEffect(() => {
+        // Remove old theme CSS variables set directly on root element
+        const root = document.documentElement;
+        const oldVars = ['--primary-color', '--primary-hover', '--bg-color', '--sidebar-bg', '--chat-bg',
+            '--text-color', '--text-muted', '--border-color', '--message-bubble-bg', '--message-own-bg',
+            '--message-own-text', '--input-bg', '--input-border', '--modal-bg', '--modal-header-bg',
+            '--glass-bg', '--glass-border', '--radius', '--transition-speed'];
+        oldVars.forEach(v => root.style.removeProperty(v));
+        // Clean old theme data from localStorage
+        localStorage.removeItem('themeId');
+        document.body.removeAttribute('data-theme');
+    }, []);
+
     useEffect(() => {
         const checkAuth = async () => {
             if (!serverUrl) {

@@ -67,8 +67,10 @@ export const parseMessageContent = (content) => {
     // Check YouTube
     const ytId = extractYoutubeId(content);
     if (ytId) {
+        // Remove entire YouTube URL including all query parameters
+        const YT_FULL_URL_REGEX = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?|shorts)\/|watch\?[^\s]*v=)|youtu\.be\/)[a-zA-Z0-9_-]{11}[^\s]*/;
         return {
-            text: content.replace(YOUTUBE_REGEX, '').trim(),
+            text: content.replace(YT_FULL_URL_REGEX, '').trim(),
             media: { type: 'youtube', data: ytId }
         };
     }

@@ -52,7 +52,7 @@ function Login({ onLogin, serverUrl, onDisconnect }) {
                 <div className="auth-form">
                     <h2>Восстановление пароля</h2>
                     {error && <div className="error-message">{error}</div>}
-                    {resetMsg && <div style={{ color: 'green', marginBottom: '10px' }}>{resetMsg}</div>}
+                    {resetMsg && <div style={{ color: 'var(--success)', marginBottom: '10px' }}>{resetMsg}</div>}
 
                     {forgotStep === 1 ? (
                         <form onSubmit={async (e) => {
@@ -117,16 +117,17 @@ function Login({ onLogin, serverUrl, onDisconnect }) {
                 <h2>Вход</h2>
 
                 <div style={{
-                    backgroundColor: '#f0f9ff',
-                    border: '1px solid #bae6fd',
-                    borderRadius: '6px',
-                    padding: '0.5rem 0.75rem',
-                    marginBottom: '1rem',
+                    backgroundColor: 'var(--primary-light, #eef2ff)',
+                    border: '1px solid rgba(99, 102, 241, 0.2)',
+                    borderRadius: '10px',
+                    padding: '0.6rem 0.85rem',
+                    marginBottom: '1.25rem',
                     fontSize: '0.8rem',
-                    color: '#0369a1',
+                    color: 'var(--primary)',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    fontWeight: '500'
                 }}>
                     <span>🔗 {serverUrl}</span>
                     <button
@@ -135,11 +136,12 @@ function Login({ onLogin, serverUrl, onDisconnect }) {
                         style={{
                             background: 'none',
                             border: 'none',
-                            color: '#ef4444',
+                            color: 'var(--danger)',
                             cursor: 'pointer',
                             fontSize: '0.75rem',
                             padding: '2px 4px',
-                            width: 'auto'
+                            width: 'auto',
+                            fontWeight: '600'
                         }}
                     >
                         Сменить
@@ -171,7 +173,7 @@ function Login({ onLogin, serverUrl, onDisconnect }) {
                     <button
                         type="button"
                         onClick={() => setShowForgot(true)}
-                        style={{ background: 'none', color: '#0369a1', border: 'none', cursor: 'pointer', fontSize: '0.9rem', textDecoration: 'underline' }}
+                        style={{ background: 'none', color: 'var(--primary)', border: 'none', cursor: 'pointer', fontSize: '0.85rem', textDecoration: 'none', fontWeight: '500' }}
                     >
                         Забыли пароль?
                     </button>

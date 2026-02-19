@@ -75,10 +75,10 @@ function MessageInput({ onSendMessage, disabled }) {
     }, [previewUrl]);
 
     return (
-        <div style={{ position: 'relative', borderTop: '1px solid #e5e7eb', padding: '10px' }}>
+        <div style={{ position: 'relative', borderTop: '1px solid var(--border)', padding: '12px 16px' }}>
             {previewUrl && (
                 <div style={{ position: 'relative', display: 'inline-block', marginBottom: '10px' }}>
-                    <img src={previewUrl} alt="Preview" style={{ maxHeight: '100px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                    <img src={previewUrl} alt="Preview" style={{ maxHeight: '100px', borderRadius: '10px', border: '1px solid var(--border)' }} />
                     <button
                         type="button"
                         onClick={clearImage}
@@ -86,7 +86,7 @@ function MessageInput({ onSendMessage, disabled }) {
                             position: 'absolute',
                             top: '-8px',
                             right: '-8px',
-                            background: 'red',
+                            background: 'var(--danger)',
                             color: 'white',
                             borderRadius: '50%',
                             width: '20px',
@@ -142,10 +142,12 @@ function MessageInput({ onSendMessage, disabled }) {
                             right: '5px',
                             top: '-20px',
                             fontSize: '0.7rem',
-                            color: content.length >= 1024 ? 'red' : '#6b7280',
-                            background: 'rgba(255,255,255,0.8)',
-                            padding: '2px 4px',
-                            borderRadius: '4px'
+                            color: content.length >= 1024 ? 'var(--danger)' : 'var(--text-secondary)',
+                            background: 'var(--surface)',
+                            backdropFilter: 'blur(4px)',
+                            padding: '2px 6px',
+                            borderRadius: '6px',
+                            fontWeight: '500'
                         }}>
                             {content.length}/1024
                         </span>

@@ -1,0 +1,13 @@
+{
+    "name": "Neon",
+    "variables": {
+        "--primary-color": "#ff00ff",
+        "--bg-color": "#000000",
+        "--text-color": "#00ff00",
+        "--sidebar-bg": "#111",
+        "--chat-bg": "#000",
+        "--message-bubble-bg": "#222",
+        "--message-own-bg": "#440044",
+        "--border-color": "#333"
+    }
+}
